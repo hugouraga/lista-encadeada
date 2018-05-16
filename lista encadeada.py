@@ -31,7 +31,16 @@ class Lista:
             aux = aux.proximo
         return aux is None and None or aux.item
     def removerInicio(self):
-        pass
+        if self.vazia():
+            return None
+        aux = self.primeiro.proximo
+        self.primeiro.proximo = aux.proximo
+        item = aux.item
+        if aux == self.ultimo:
+            self.ultimo = self.primeiro
+        aux.proximo = None
+        del aux
+        return item
     def removerFim(self):
         if self.vazia():
             return None
